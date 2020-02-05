@@ -10,7 +10,7 @@ func NQueensHelper(board *Board, col int) {
 	} else {
 		for row := 0; row < board.Size(); row++ {
 			if board.IsSafe(row, col) {
-				// chosoe
+				// choosee
 				board.Place(row, col)
 				// explore
 				NQueensHelper(board, col+1)
