@@ -1,10 +1,16 @@
 package main
 
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
+
 func NQueens(board *Board) {
-	NQueensHelper(board, 0)
+	solveNQueens(board, 0)
 }
 
-func NQueensHelper(board *Board, col int) {
+func solveNQueens(board *Board, col int) {
 	if col >= board.Size() {
 		board.Print()
 	} else {
@@ -13,7 +19,7 @@ func NQueensHelper(board *Board, col int) {
 				// chosoe
 				board.Place(row, col)
 				// explore
-				NQueensHelper(board, col+1)
+				solveNQueens(board, col+1)
 				// unchoose
 				board.Remove(row, col)
 			}
@@ -21,7 +27,22 @@ func NQueensHelper(board *Board, col int) {
 	}
 }
 
+func usage() {
+	fmt.Println(`Usage: nqueens N
+  N: number`)
+	os.Exit(1)
+}
+
 func main() {
-	b := NewBoard(4)
+	if len(os.Args) <= 1 {
+		usage()
+	}
+
+	n, err := strconv.Atoi(os.Args[1])
+	if err != nil {
+		usage()
+	}
+
+	b := NewBoard(n)
 	NQueens(b)
 }
