@@ -1,5 +1,5 @@
 ## NQueens
-N-Queens solver using recursive backtracking implemented in Go
+Solution for the [N-Queens puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle) using recursive backtracking implemented in Go
 
 ### Usage
 
